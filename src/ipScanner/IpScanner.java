@@ -13,12 +13,12 @@ import javax.swing.*;
 public class IpScanner {
 
     public static void main(String firstIp, Integer maxIps, Integer maxPort, Boolean debugArray) {
-        ConcurrentSkipListSet networkIps = scan(firstIp, maxIps, debugArray);
+        ConcurrentSkipListSet networkIps = scan(firstIp, maxIps, debugArray); // Run IP scan
         System.out.println("All devices detected! Starting port scan.");
         for (Object i : networkIps) {
             String ip = String.valueOf(i);
             try {
-                runPortScan(ip, maxPort);
+                runPortScan(ip, maxPort); // Run port scan for each ip
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -26,7 +26,7 @@ public class IpScanner {
         System.out.println("Port scan completed.");
     }
 
-    /**
+    /*
      * @param firstIpInTheNetwork e.g: 192.168.1.0
      * @param numOfIps            e.g: 254
      * @return
